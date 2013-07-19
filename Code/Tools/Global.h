@@ -16,6 +16,12 @@
 
 
 
+
+
+
+
+const string resourcesPath  = PlatformInterface::CreateInterfaceManager()->GetResourcePath() + "/";
+
 Matrix4x4 GutMatrixLookAtRH(Vector3 &eye, Vector3 &lookat, Vector3 &up);
 
 Matrix4x4 GutMatrixPerspectiveRH_OpenGL(float fovy, float aspect, float z_near, float z_far);

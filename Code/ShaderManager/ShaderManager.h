@@ -22,15 +22,11 @@
     V开头表示是一个Vector
     F开头表是一个 Float
  */
-struct UniformHandles
-{
-    GLint WorldMatrix4x4;         //世界坐标
-    GLint ViewMatrix4x4;          //视图坐标 即 lookat
-    GLint Projection4x4;          //投影
-    GLint NormalMatrix3x3;
 
-};
 
+/*
+ *      @breif   对应 glsl中的  attribute 变量名称      比如VPosition 在 shader里面 就对应 attribute vec4 VPosition;
+ */
 struct AttributeHandles
 {
     GLint VPosition;             //顶点位置(x,y,z)
@@ -39,33 +35,46 @@ struct AttributeHandles
 };
 
 
-
-struct ShaderObject
+/*
+ *      @breif   对应 glsl中的  uniform 变量名称      比如 Projection4x4  在 shader里面 就对应 uniform mat4 Projection4x4;
+ */
+struct UniformHandles
 {
-    UniformHandles      m_uniforms;
-    AttributeHandles    m_attributes;
-    GLuint              program;
+    GLint WorldMatrix4x4;         //世界坐标
+    GLint ViewMatrix4x4;          //视图坐标 即 lookat
+    GLint Projection4x4;          //投影
+    GLint NormalMatrix3x3;        //法线矩阵
 };
 
 
 
 
+struct ShaderObject
+{
+    UniformHandles      m_uniforms;
+    AttributeHandles    m_attributes;
+    GLuint              programID;    //某个shader的 ID
+};
+
+
+
+
+using namespace std;
 class ShaderManager 
 {
+
     
 
 public:
     
     GLuint BuildProgram(const char* vShader, const char* fShader) const;
     GLuint BuildShader(const char* source, GLenum shaderType) const;
-    void   UseShader(ShaderObject *obj);
+    void   BingShaderObject(ShaderObject *obj);
 
-    void ReadShader(char *rs,const std::string &name, int len);                     //将shader 内容读到一个char数组中
-    ShaderObject* LoadShader(const std::string &shaderName);        //加载shader
-    int ShaderSize(const std::string& name);                                        //计算单个shader里面内容的大小
-    
-    ShaderObject* GetShaderObject( const std::string& name );
-    
+    void ReadShader(char *rs,const string &name, int len);                           //将shader 内容读到一个char数组中
+    ShaderObject* LoadShader(const string &vertName, const string &fragName);        //加载shader
+    int ShaderSize(const string& name);                                              //计算单个shader里面内容的大小(有多少个char)
+        
 private:
     ~ShaderManager()
     {

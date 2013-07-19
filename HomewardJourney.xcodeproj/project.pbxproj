@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181A5D13179923CF00D2A98E /* IOSInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 181A5D12179923CF00D2A98E /* IOSInterface.mm */; };
 		188EBE37179684CF00F699D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188EBE36179684CF00F699D9 /* UIKit.framework */; };
 		188EBE39179684CF00F699D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188EBE38179684CF00F699D9 /* Foundation.framework */; };
 		188EBE3B179684CF00F699D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188EBE3A179684CF00F699D9 /* CoreGraphics.framework */; };
@@ -23,11 +24,13 @@
 		188EBE72179690CF00F699D9 /* Global.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188EBE70179690CF00F699D9 /* Global.cpp */; };
 		188EBE791796933200F699D9 /* render_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188EBE741796933200F699D9 /* render_data.cpp */; };
 		188EBE871796985000F699D9 /* ShaderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188EBE851796985000F699D9 /* ShaderManager.cpp */; };
-		188EBE8C17969BA400F699D9 /* Directional.es2.frag in Resources */ = {isa = PBXBuildFile; fileRef = 188EBE8817969B7E00F699D9 /* Directional.es2.frag */; };
-		188EBE8D17969BA400F699D9 /* Directional.es2.vert in Resources */ = {isa = PBXBuildFile; fileRef = 188EBE8917969B7E00F699D9 /* Directional.es2.vert */; };
+		188EBE8C17969BA400F699D9 /* P.frag in Resources */ = {isa = PBXBuildFile; fileRef = 188EBE8817969B7E00F699D9 /* P.frag */; };
+		188EBE8D17969BA400F699D9 /* V.vert in Resources */ = {isa = PBXBuildFile; fileRef = 188EBE8917969B7E00F699D9 /* V.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181A5D11179923CF00D2A98E /* Interfaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interfaces.h; sourceTree = "<group>"; };
+		181A5D12179923CF00D2A98E /* IOSInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSInterface.mm; sourceTree = "<group>"; };
 		188EBE33179684CF00F699D9 /* HomewardJourney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomewardJourney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188EBE36179684CF00F699D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		188EBE38179684CF00F699D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -50,7 +53,6 @@
 		188EBE64179685FF00F699D9 /* VectorCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorCustom.h; sourceTree = "<group>"; };
 		188EBE651796861B00F699D9 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		188EBE661796861B00F699D9 /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
-		188EBE68179689D800F699D9 /* Interfaces.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interfaces.h; sourceTree = "<group>"; };
 		188EBE6C17968BD200F699D9 /* RenderingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingScene.cpp; sourceTree = "<group>"; };
 		188EBE6D17968BD200F699D9 /* RenderingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderingScene.h; sourceTree = "<group>"; };
 		188EBE70179690CF00F699D9 /* Global.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Global.cpp; sourceTree = "<group>"; };
@@ -59,8 +61,8 @@
 		188EBE751796933200F699D9 /* render_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_data.h; sourceTree = "<group>"; };
 		188EBE851796985000F699D9 /* ShaderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderManager.cpp; sourceTree = "<group>"; };
 		188EBE861796985000F699D9 /* ShaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderManager.h; sourceTree = "<group>"; };
-		188EBE8817969B7E00F699D9 /* Directional.es2.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Directional.es2.frag; sourceTree = "<group>"; };
-		188EBE8917969B7E00F699D9 /* Directional.es2.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Directional.es2.vert; sourceTree = "<group>"; };
+		188EBE8817969B7E00F699D9 /* P.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = P.frag; sourceTree = "<group>"; };
+		188EBE8917969B7E00F699D9 /* V.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = V.vert; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181A5D10179923CF00D2A98E /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				181A5D11179923CF00D2A98E /* Interfaces.h */,
+				181A5D12179923CF00D2A98E /* IOSInterface.mm */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
 		188EBE2A179684CF00F699D9 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +147,7 @@
 		188EBE5D179685FF00F699D9 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				181A5D10179923CF00D2A98E /* Interfaces */,
 				188EBE841796984F00F699D9 /* ShaderManager */,
 				188EBE731796933200F699D9 /* Data */,
 				188EBE761796933200F699D9 /* Shaders */,
@@ -153,7 +165,6 @@
 				188EBE6C17968BD200F699D9 /* RenderingScene.cpp */,
 				188EBE651796861B00F699D9 /* EAGLView.h */,
 				188EBE661796861B00F699D9 /* EAGLView.mm */,
-				188EBE68179689D800F699D9 /* Interfaces.h */,
 			);
 			path = EView;
 			sourceTree = "<group>";
@@ -191,8 +202,8 @@
 		188EBE761796933200F699D9 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				188EBE8817969B7E00F699D9 /* Directional.es2.frag */,
-				188EBE8917969B7E00F699D9 /* Directional.es2.vert */,
+				188EBE8817969B7E00F699D9 /* P.frag */,
+				188EBE8917969B7E00F699D9 /* V.vert */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -257,8 +268,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188EBE8C17969BA400F699D9 /* Directional.es2.frag in Resources */,
-				188EBE8D17969BA400F699D9 /* Directional.es2.vert in Resources */,
+				188EBE8C17969BA400F699D9 /* P.frag in Resources */,
+				188EBE8D17969BA400F699D9 /* V.vert in Resources */,
 				188EBE41179684CF00F699D9 /* InfoPlist.strings in Resources */,
 				188EBE49179684CF00F699D9 /* Default.png in Resources */,
 				188EBE4B179684CF00F699D9 /* Default@2x.png in Resources */,
@@ -280,6 +291,7 @@
 				188EBE72179690CF00F699D9 /* Global.cpp in Sources */,
 				188EBE791796933200F699D9 /* render_data.cpp in Sources */,
 				188EBE871796985000F699D9 /* ShaderManager.cpp in Sources */,
+				181A5D13179923CF00D2A98E /* IOSInterface.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

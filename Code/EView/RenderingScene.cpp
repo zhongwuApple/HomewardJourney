@@ -19,7 +19,7 @@ RenderingScene::~RenderingScene()
 void RenderingScene::Initialize()
 {
     ShaderManager *sob =  new ShaderManager();
-    shader = sob->LoadShader("Directional.es2");
+    shader = sob->LoadShader( "V.vert","P.frag" );
     
     g_view_matrix = GutMatrixLookAtRH(g_eye, g_lookat, g_up);
     g_projection_matrix = GutMatrixPerspectiveRH_OpenGL(g_fFovW, g_fAspect, g_fart, g_near);
@@ -31,7 +31,7 @@ void RenderingScene::Initialize()
 void RenderingScene::Render()
 {
     // 清除画面
-    GLuint program = shader->program;
+    GLuint programID = shader->programID;
     
 	// 清除画面
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -39,7 +39,7 @@ void RenderingScene::Render()
 	// 把正向和反向的面都画出来
 	glDisable(GL_CULL_FACE);
     
-    glUseProgram(program);
+    glUseProgram(programID);
     
     glVertexAttribPointer(shader->m_attributes.VPosition, 3, GL_FLOAT, 0, sizeof(Vertex_VC), &g_vertices[0].m_Position);
     glEnableVertexAttribArray( shader->m_attributes.VPosition );

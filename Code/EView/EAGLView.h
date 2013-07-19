@@ -42,7 +42,7 @@ class RenderingScene;
 
 
 
-
+-(void) OpenGLConfig;
 
 -(BOOL) initEAGLContext;
 

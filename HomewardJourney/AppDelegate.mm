@@ -35,7 +35,7 @@
         float h = [UIScreen mainScreen].bounds.size.height;
         
         eaglView = [[EAGLView alloc] initWithFrame:CGRectMake(0, 0, w, h)];
-        
+        [eaglView OpenGLConfig];
         
         [self.window addSubview:eaglView];
         [eaglView startAnimation];

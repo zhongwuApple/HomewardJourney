@@ -9,6 +9,7 @@
 #import "EAGLView.h"
 #include "RenderingScene.h"
 
+
 @implementation EAGLView
 @synthesize animationFrameInterval;
 
@@ -39,6 +40,21 @@
 
 
 
+/*
+ *  @brief  opengl加载和初始化
+ */
+-(void) OpenGLConfig
+{
+    [self initEAGLContext];
+    [self initBuffers];
+    [self initDepthBuffer];
+    [self initOutEngine];
+    [self startAnimation];
+    
+}
+
+
+
 
 /*
  *  @brief  图层 和 initEAGLContext
@@ -59,6 +75,10 @@
     
     return YES;
 }
+
+
+
+
 
 
 /*
@@ -133,6 +153,7 @@
  */
 - (void)gameLoop
 {
+    
 //    glViewport(0, 0, backingWidth, backingHeight);
     scene->Render();
     [m_context presentRenderbuffer:GL_RENDERBUFFER];

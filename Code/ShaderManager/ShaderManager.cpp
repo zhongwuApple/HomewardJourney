@@ -11,7 +11,15 @@
 #include <stdio.h>
 #include "Global.h"
 
-using namespace std;
+
+//这里的宏对应 shader里面的 名称
+
+#define V_Position          "VPosition"
+#define V_Color             "VColor"
+
+#define U_WorldMatrix4x4    "WorldMatrix4x4"
+#define U_ViewMatrix4x4     "ViewMatrix4x4"
+#define U_Projection4x4     "Projection4x4"
 
 
 
@@ -44,12 +52,10 @@ void ShaderManager::ReadShader(char *rs, const string& name, int len)
 
 
 
-ShaderObject* ShaderManager::LoadShader(const string &shaderName)
+ShaderObject* ShaderManager::LoadShader(const string &vertName, const string &fragName)
 {
-        const string resourcesPath = "/Users/apple/Library/Application Support/iPhone Simulator/6.1/Applications/48C896EB-B795-48B8-8F90-912ABDD8AB08/HomewardJourney.app/";
-        const string& vName = resourcesPath + shaderName + ".vert";
-        const string& fName = resourcesPath + shaderName + ".frag";
-    
+        const string& vName = resourcesPath + vertName;
+        const string& fName = resourcesPath + fragName;
     
     
         int vLen = ShaderSize(vName);
@@ -60,15 +66,12 @@ ShaderObject* ShaderManager::LoadShader(const string &shaderName)
         ReadShader(fragmentShaderSource,fName, fLen);
     
     
+        GLuint programID = BuildProgram(vertexShaderSource, fragmentShaderSource);
     
-    
-    std::cout<<"vLen si "<<vLen <<" fLen is "<<fLen<<endl;
-    
-        GLuint program = BuildProgram(vertexShaderSource, fragmentShaderSource);
-    
+        //绑定Shader
         ShaderObject *newObj = (ShaderObject *)malloc(sizeof(ShaderObject));
-        newObj->program = program;
-        UseShader(newObj);
+        newObj->programID = programID;
+        BingShaderObject(newObj);
         return newObj;
 }
 
@@ -123,24 +126,23 @@ GLuint ShaderManager::BuildShader(const char* source, GLenum shaderType) const
 
 
 
-void ShaderManager::UseShader(ShaderObject *obj)
+/*
+ *      @brief   将变量名称于  shader 里面的变量绑定
+ */
+void ShaderManager::BingShaderObject(ShaderObject *obj)
 {
-    GLuint program = obj->program;
+    GLuint program = obj->programID;
     glUseProgram(program);
-    obj->m_attributes.VPosition = glGetAttribLocation(program, "VPosition");
-    obj->m_attributes.VColor = glGetAttribLocation(program, "VColor");
+    
+    //attribute 变量
+    obj->m_attributes.VPosition = glGetAttribLocation(program, V_Position);
+    obj->m_attributes.VColor = glGetAttribLocation(program, V_Color);
 
-    obj->m_uniforms.WorldMatrix4x4 = glGetUniformLocation(program, "WorldMatrix4x4");
-    obj->m_uniforms.ViewMatrix4x4 = glGetUniformLocation(program, "ViewMatrix4x4");
-    obj->m_uniforms.Projection4x4 = glGetUniformLocation(program, "Projection4x4");
-    
+    //uniform   变量
+    obj->m_uniforms.WorldMatrix4x4 = glGetUniformLocation(program, U_WorldMatrix4x4);
+    obj->m_uniforms.ViewMatrix4x4 = glGetUniformLocation(program, U_ViewMatrix4x4);
+    obj->m_uniforms.Projection4x4 = glGetUniformLocation(program, U_Projection4x4);
 
-    
-
-    
-
-    
-    
 }
 
 
